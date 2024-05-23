@@ -12,11 +12,11 @@ resource "aws_s3_bucket" "bucket" {
   bucket = var.name
 }
 ```
-2. Go to given file aws-infrastructure/terraform/modules/bucket/vars.tf and implement:
+2. Go to given file ```aws-infrastructure/terraform/modules/bucket/vars.tf``` and implement:
 ```hcl
 variable "name" {}
 ```
-3. Go to given file aws-infrastructure/terraform/common/general/bucket/main.tf and implement:
+3. Go to given file ```aws-infrastructure/terraform/common/general/bucket/main.tf``` and implement:
 ```hcl
 provider "aws" {
   region                  = var.region
@@ -26,19 +26,16 @@ provider "aws" {
 
 module "bucket" {
   source = "../../../modules/bucket"
-  name = "<<UNIQ_BUCKET_NAME>>"
+  name = "<<UNIQUE_BUCKET_NAME>>"
 }
 ```
-4. Go to given file aws-infrastructure/terraform/common/general/bucket/vars.tf and implement:
+4. Go to given file ```aws-infrastructure/terraform/common/general/bucket/vars.tf``` and implement:
 ```hcl
 variable "region" {
   description = "Region to launch configuration in"
 }
 variable "profile" {
   description = "Default profile id"
-}
-variable "name" {
-  description = "Name of the bucket"
 }
 
 variable "shared_credentials_file" {
@@ -60,8 +57,8 @@ terraform {
 }
 ```
 5. Go to given directory
-   cd aws-infrastructure/terraform/common/general/create-remote-state-bucket/
-6. Initiate terraform -> terraform init  This will install all modules required by this configuration. 
+   ```cd aws-infrastructure/terraform/common/general/bucket/```
+6. Initiate terraform -> ```terraform init```  This will install all modules required by this configuration. 
 7. Start creation of AWS infrastructure ->
 ```hcl
 terraform apply \
@@ -69,7 +66,6 @@ terraform apply \
   -var='profile=backend-test' \
   -var='region=eu-central-1' \
   -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
-
 ```
 8. Check if S3 bucket has been createt in AWS
 9. Destroy of AWS infrastructure ->
@@ -79,3 +75,4 @@ terraform destroy \
   -var='profile=backend-test' \
   -var='region=eu-central-1' \
   -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
+```
