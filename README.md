@@ -1,9 +1,10 @@
-![image](https://github.com/Alegres/awstraining-terraform-hands-on/assets/33218033/09c661eb-178d-4a1d-bf0b-3665176848c8)# AWS Training - Terraform Hands-on
+# AWS Training - Terraform Hands-on
 ## Create bucket
 Documentation:
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs#provider-configuration
 * https://developer.hashicorp.com/terraform/language/modules/sources#local-paths
+
 
 1. Go to given file aws-infrastructure/terraform/modules/bucket/main.tf and implement:
 ```hcl
