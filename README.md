@@ -6,7 +6,7 @@ Documentation:
 * https://developer.hashicorp.com/terraform/language/modules/sources#local-paths
 
 
-1. Go to given file aws-infrastructure/terraform/modules/bucket/main.tf and implement:
+1. Go to given file ```aws-infrastructure/terraform/modules/bucket/main.tf``` and implement:
 ```hcl
 resource "aws_s3_bucket" "bucket" {
   bucket = var.name
