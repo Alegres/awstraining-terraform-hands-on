@@ -1,4 +1,4 @@
-# AWS Training - Terraform Hands-on
+![image](https://github.com/Alegres/awstraining-terraform-hands-on/assets/33218033/09c661eb-178d-4a1d-bf0b-3665176848c8)# AWS Training - Terraform Hands-on
 ## Create bucket
 Documentation:
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
@@ -70,3 +70,11 @@ terraform apply \
   -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
 
 ```
+8. Check if S3 bucket has been createt in AWS
+9. Destroy of AWS infrastructure ->
+```hcl
+terraform destroy \
+  -var='environment=emea' \
+  -var='profile=backend-test' \
+  -var='region=eu-central-1' \
+  -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
