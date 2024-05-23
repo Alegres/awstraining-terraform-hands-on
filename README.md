@@ -2,54 +2,71 @@
 ## Create bucket
 Documentation:
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+* https://registry.terraform.io/providers/hashicorp/aws/latest/docs#provider-configuration
+* https://developer.hashicorp.com/terraform/language/modules/sources#local-paths
 
-1. Go to ```/dad/main.tf```
-
-Implement:
-
-
+1. Go to given file aws-infrastructure/terraform/modules/bucket/main.tf and implement:
 ```hcl
-# Sets up an S3 bucket to store the remote states of all modules
-resource "aws_s3_bucket" "remote_state" {
+resource "aws_s3_bucket" "bucket" {
   bucket = var.name
 }
-
-resource "aws_s3_bucket_versioning" "remote_state_versioning" {
-  bucket = aws_s3_bucket.remote_state.id
-  versioning_configuration {
-    status = "Enabled"
-  }
+```
+2. Go to given file aws-infrastructure/terraform/modules/bucket/vars.tf and implement:
+```hcl
+variable "name" {}
+```
+3. Go to given file aws-infrastructure/terraform/common/general/bucket/main.tf and implement:
+```hcl
+provider "aws" {
+  region                  = var.region
+  shared_credentials_files = [ var.shared_credentials_file ]
+  profile                 = var.profile
 }
 
-resource "aws_s3_bucket_lifecycle_configuration" "remote_state_lifecycle_configuration" {
-  bucket = aws_s3_bucket.remote_state.id
-  rule {
-    id = "delete"
-    status = "Enabled"
-
-    noncurrent_version_expiration {
-      noncurrent_days = 365
-    }
-  }
-}
-
-resource "aws_s3_bucket_server_side_encryption_configuration" "remote_state_server_side_encryption_configuration" {
-  bucket = aws_s3_bucket.remote_state.id
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
-    }
-  }
-}
-
-resource "aws_s3_bucket_public_access_block" "public_access" {
-  bucket = aws_s3_bucket.remote_state.id
-
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
+module "bucket" {
+  source = "../../../modules/bucket"
+  name = "<<UNIQ_BUCKET_NAME>>"
 }
 ```
+4. Go to given file aws-infrastructure/terraform/common/general/bucket/vars.tf and implement:
+```hcl
+variable "region" {
+  description = "Region to launch configuration in"
+}
+variable "profile" {
+  description = "Default profile id"
+}
+variable "name" {
+  description = "Name of the bucket"
+}
 
-2. Test
+variable "shared_credentials_file" {
+  description = "Path to cloud credentials"
+}
+
+variable "environment" {}
+```
+5. Go to given file aws-infrastructure/terraform/common/general/bucket/versions.tf and implement:
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 5.0.1"
+    }
+  }
+  required_version = ">= 1.4.6"
+}
+```
+5. Go to given directory
+   cd aws-infrastructure/terraform/common/general/create-remote-state-bucket/
+6. Initiate terraform -> terraform init  This will install all modules required by this configuration. 
+7. Start creation of AWS infrastructure ->
+```hcl
+terraform apply \
+  -var='environment=emea' \
+  -var='profile=backend-test' \
+  -var='region=eu-central-1' \
+  -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
+
+```
