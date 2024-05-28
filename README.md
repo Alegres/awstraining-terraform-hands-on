@@ -226,7 +226,7 @@ First, please set secrets (credentials) in AWS Secrets Manager:
 }
 ```
 
-You also need to update **task.json** and replace **<<TODO: set ARN of secrets manager>>** with ARN of your Secrets Manager.
+You also need to update **task.json** and replace **<<TODO: set ARN of secrets manager>>** with ARN of your Secrets Manager. Push your changes.
 
 Then, please set **BACKEND_EMEA_TEST_SMOKETEST_BACKEND_PASSWORD** repository secret to "welt", as this is the password for the above test user, that will be used for smoke tests.
 
