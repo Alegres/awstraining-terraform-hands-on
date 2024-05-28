@@ -207,3 +207,36 @@ Retrieve mesurements
 ```bash
 curl -vk http://myapp-lb-564621670.eu-central-1.elb.amazonaws.com/device/v1/test -u testUser:welt
 ```
+
+# Deploy application with GitHub
+First, please set secrets (credentials) in AWS Secrets Manager:
+```json
+{
+  "backend": {
+    "security": {
+      "users": [
+        {
+          "username": "userEMEATest",
+          "password": "$2a$10$uKw9ORqCF.qA3p6woHCgmeGW0jFuU9AstYhl61Uw8RTQ5AaZCfuru",
+          "roles": "USER"
+        }
+      ]
+    }
+  }
+}
+```
+
+You also need to update **task.json** and replace **<<TODO: set ARN of secrets manager>>** with ARN of your Secrets Manager.
+
+Then, please set **BACKEND_EMEA_TEST_SMOKETEST_BACKEND_PASSWORD** repository secret to "welt", as this is the password for the above test user, that will be used for smoke tests.
+
+Make sure that you have also:
+* Replaced <<ACCOUNT_ID>> in the whole project (replace all in all files) with your AWS Account ID.
+   * **Make sure to push your changes to your forked repository!**
+* Set AWS credentials in GitHub Settings
+
+Go to Settings -> Secrets and variables and setup AWS credentials:
+* **BACKEND_EMEA_TEST_AWS_KEY**
+* **BACKEND_EMEA_TEST_AWS_SECRET**
+
+Finally, please run **Multibranch pipeline** to deploy application to previously created infrastructure.
