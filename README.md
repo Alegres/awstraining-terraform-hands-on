@@ -131,3 +131,79 @@ terraform destroy \
   -var='region=eu-central-1' \
   -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
 ```
+
+# Deploy application with manual commands
+If you do not have Docker, Maven and JAVA installed locally, then please setup Cloud9 environment in AWS, following instructions from:
+* https://github.com/Alegres/awstraining-basics-hands-on?tab=readme-ov-file#deploy-our-application
+
+1. Go to main directory of your forked repository and build application using Maven
+
+```bash
+mvn clean install
+```
+
+2. Create Docker image
+
+```bash
+docker build -t backend .
+```
+
+3. Go to AWS -> ECR -> backend repository and click on "View push commands"
+
+4. Login to AWS ECR by using the **ecr get-login-password** command from the pop-up dialog
+
+```bash
+aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 467331071075.dkr.ecr.eu-central-1.amazonaws.com
+```
+
+This will allow you to push Docker images.
+
+**When running locally - it is important to provide --profile option and specify your AWS profile.**
+
+5. Tag Docker image with the **latest** tag
+
+```bash
+docker tag backend:latest 467331071075.dkr.ecr.eu-central-1.amazonaws.com/backend:latest
+```
+
+6. Push image to ECR
+
+```bash
+docker push 467331071075.dkr.ecr.eu-central-1.amazonaws.com/backend:latest
+```
+
+7. Go to AWS -> ECR -> backend and confirm that the image was pushed
+
+8. Go to AWS -> ECS -> Your Fargate cluster -> select your service and click on "Update"
+
+9. Select "Force new deployment", specify "Desired tasks" to 3, leave other options untouched and click on "Update" button
+
+10. Verify if the deployment has started
+
+11. Under "Tasks" tab confirm that all 3 tasks are in state "Running"
+
+12. Wait some time (around 3 minutes) and then go to AWS -> EC2 -> Target groups, select your Target Group and confirm that all three tasks have been registered as "targets" with a "healthy" state
+
+13.  Go to AWS -> EC2 -> Load Balancers and select your Load Balancer
+
+14. Copy DNS of your Load Balancer
+
+15. Execute test request (just adjust URL to DNS of your Load Balancer)
+
+Create test measurement
+
+```bash
+curl -vk 'http://myapp-lb-564621670.eu-central-1.elb.amazonaws.com/device/v1/test' \
+--header 'Content-Type: application/json' \
+-u testUser:welt \
+--data '{
+    "type": "test",
+    "value": -510.190
+}'
+```
+
+Retrieve mesurements
+
+```bash
+curl -vk http://myapp-lb-564621670.eu-central-1.elb.amazonaws.com/device/v1/test -u testUser:welt
+```
