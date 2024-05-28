@@ -132,6 +132,69 @@ terraform destroy \
   -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
 ```
 
+# 02 Create remote state and lock
+
+# 03 Create environments
+1. Checkout to branch
+
+```
+git checkout 03-create-environments
+```
+
+2. Go to the given directory
+
+```
+cd aws-infrastructure/terraform
+```
+
+3. Start w2.sh script to create environmental variables
+
+```
+./w2.sh backend-test eu-central-1 environments/backend-test/emea/eu-central-1/globals apply
+```
+
+4. Check if above environmental variables have been created/updated in S3 state bucket in AWS
+
+5. Start w2.sh script to create VPC
+
+```
+./w2.sh backend-test eu-central-1 common/networking/vpc apply
+```
+
+6. Check if above VPC has been created in AWS
+
+7. Start w2.sh script to create Security Groups
+
+```
+./w2.sh backend-test eu-central-1 common/networking/securitygroups apply
+```
+
+8. Check if above Security Groups has been created in AWS.
+
+# 04 Create ECS (whole infrastructure)
+1. Checkout to branch
+
+```
+git checkout 04-create-ecs 
+```
+
+2. Go to given directory:​
+
+```
+cd aws-infrastructure/terraform​
+```
+
+3. Start the setup_new_region.sh script​
+
+```
+./setup_new_region.sh w2.sh backend-test eu-central-1 apply​
+```
+
+Analyze carefully the output.​
+Apply only changes that you understand, one-by-one!​
+
+4. After all is done – check your AWS account and make sure that the ECS Fargate cluster was created
+
 # Deploy application with manual commands
 If you do not have Docker, Maven and JAVA installed locally, then please setup Cloud9 environment in AWS, following instructions from:
 * https://github.com/Alegres/awstraining-basics-hands-on?tab=readme-ov-file#deploy-our-application
