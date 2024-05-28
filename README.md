@@ -1,5 +1,13 @@
-# AWS Training - Terraform Hands-on
-Here you can find more details regarding hands-ons presented in the Terraform training module.
+# Content
+- [Content](#content)
+- [Preparation](#preparation)
+- [01 Create S3 bucket](#01-create-s3-bucket)
+- [02 Create remote state and lock](#02-create-remote-state-and-lock)
+- [03 Create environments](#03-create-environments)
+- [04 Create ECS (whole infrastructure)](#04-create-ecs-whole-infrastructure)
+- [Deploy application with manual commands](#deploy-application-with-manual-commands)
+- [Deploy application with GitHub](#deploy-application-with-github)
+
 
 # Preparation
 1. Fork training repository to your account
