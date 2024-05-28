@@ -133,6 +133,33 @@ terraform destroy \
 ```
 
 # 02 Create remote state and lock
+1. Checkout to branch
+
+```
+git checkout 02-create-remote-state-and-lock
+```
+
+2. Go to the given directory
+
+```
+cd aws-infrastructure/terraform​
+```
+
+3. Start the w2.sh script to provision remote state bucket
+
+```
+./w2.sh backend-test eu-central-1 common/general/create-remote-state-bucket apply
+```
+
+4. Check if above bucket has been created in AWS
+
+5. Start the w2.sh script to provision DynamoDB locks table
+
+```
+./w2.sh backend-test eu-central-1 common/general/dynamo-lock apply
+```
+
+6. Check if above table has been created in AWS
 
 # 03 Create environments
 1. Checkout to branch
