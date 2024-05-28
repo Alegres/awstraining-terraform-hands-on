@@ -1,5 +1,36 @@
 # AWS Training - Terraform Hands-on
-## Create bucket
+Here you can find more details regarding hands-ons presented in the Terraform training module.
+
+# Preparation
+1. Fork training repository to your account
+    * https://github.com/Alegres/awstraining-terraform
+
+2. Install Terraform from PowerShell ​
+
+```
+choco install terraform --version=1.7.0 –force​
+```
+​
+3. Install AWS CLI from PowerShell ​
+
+```
+choco install awscli​
+```
+​
+
+4. Create profile in AWS credentials
+
+To be able to apply Terraform changes locally, you should create a new profile in ```C:\Users\YOURUSER\.aws\credentials``` and set credentials to your account.
+```
+[backend-test]​
+aws_access_key_id = YOUR_ACCESS_KEY_ID​
+aws_secret_access_key = YOU_SECRET_ACCESS_KEY​
+```
+
+**DO NOT USE ROOT USER CREDENTIALS! ​**
+Instead, create admin user in IAM, assign him AdministratorAccess policy and generate credentials for this non-root user.​
+
+# 01 Create S3 bucket
 Documentation:
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs#provider-configuration
