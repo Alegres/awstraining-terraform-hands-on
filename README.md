@@ -5,8 +5,10 @@
 - [02 Create remote state and lock](#02-create-remote-state-and-lock)
 - [03 Create environments](#03-create-environments)
 - [04 Create ECS (whole infrastructure)](#04-create-ecs-whole-infrastructure)
-- [Deploy application with manual commands](#deploy-application-with-manual-commands)
-- [Deploy application with GitHub](#deploy-application-with-github)
+- [Application deployment](#application-deployment)
+  - [Set basic auth credentials in Secrets Manager](#set-basic-auth-credentials-in-secrets-manager)
+  - [Deploy application with manual commands](#deploy-application-with-manual-commands)
+  - [Deploy application with GitHub](#deploy-application-with-github)
 
 
 # Preparation
@@ -230,7 +232,28 @@ Apply only changes that you understand, one-by-one!​
 
 4. After all is done – check your AWS account and make sure that the ECS Fargate cluster was created
 
-# Deploy application with manual commands
+# Application deployment
+## Set basic auth credentials in Secrets Manager
+First, please set secrets (credentials) in AWS Secrets Manager:
+```json
+{
+  "backend": {
+    "security": {
+      "users": [
+        {
+          "username": "userEMEATest",
+          "password": "$2a$10$uKw9ORqCF.qA3p6woHCgmeGW0jFuU9AstYhl61Uw8RTQ5AaZCfuru",
+          "roles": "USER"
+        }
+      ]
+    }
+  }
+}
+```
+
+You also need to update **task.json** and replace **<<TODO: set ARN of secrets manager>>** with ARN of your Secrets Manager. Push your changes.
+
+## Deploy application with manual commands
 If you do not have Docker, Maven and JAVA installed locally, then please setup Cloud9 environment in AWS, following instructions from:
 * https://github.com/Alegres/awstraining-basics-hands-on?tab=readme-ov-file#deploy-our-application
 
@@ -306,26 +329,7 @@ Retrieve mesurements
 curl -vk http://myapp-lb-564621670.eu-central-1.elb.amazonaws.com/device/v1/test -u testUser:welt
 ```
 
-# Deploy application with GitHub
-First, please set secrets (credentials) in AWS Secrets Manager:
-```json
-{
-  "backend": {
-    "security": {
-      "users": [
-        {
-          "username": "userEMEATest",
-          "password": "$2a$10$uKw9ORqCF.qA3p6woHCgmeGW0jFuU9AstYhl61Uw8RTQ5AaZCfuru",
-          "roles": "USER"
-        }
-      ]
-    }
-  }
-}
-```
-
-You also need to update **task.json** and replace **<<TODO: set ARN of secrets manager>>** with ARN of your Secrets Manager. Push your changes.
-
+## Deploy application with GitHub
 Then, please set **BACKEND_EMEA_TEST_SMOKETEST_BACKEND_PASSWORD** repository secret to "welt", as this is the password for the above test user, that will be used for smoke tests.
 
 Make sure that you have also:
