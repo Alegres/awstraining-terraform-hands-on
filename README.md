@@ -45,6 +45,8 @@ Documentation:
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs#provider-configuration
 * https://developer.hashicorp.com/terraform/language/modules/sources#local-paths
 
+First, please cheack out to the first branch:
+```git checkout 01-create-s3-bucket```
 
 1. Go to given file ```aws-infrastructure/terraform/modules/bucket/main.tf``` and implement module
 
