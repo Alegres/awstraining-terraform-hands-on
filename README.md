@@ -168,7 +168,7 @@ cd aws-infrastructure/terraform​
 5. Start the w2.sh script to provision DynamoDB locks table
 
 ```
-./w2.sh backend-test eu-central-1 common/general/dynamo-lock apply
+./w2.sh backend-test eu-central-1 common/general/create-dynamo-lock apply
 ```
 
 6. Check if above table has been created in AWS
