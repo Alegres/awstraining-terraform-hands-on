@@ -67,7 +67,6 @@ variable "name" {}
 ```hcl
 provider "aws" {
   region                  = var.region
-  shared_credentials_files = [ var.shared_credentials_file ]
   profile                 = var.profile
 }
 
@@ -86,10 +85,6 @@ variable "region" {
 
 variable "profile" {
   description = "Default profile id"
-}
-
-variable "shared_credentials_file" {
-  description = "Path to cloud credentials"
 }
 
 variable "environment" {}
