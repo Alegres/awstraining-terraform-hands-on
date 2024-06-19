@@ -124,8 +124,7 @@ This will install all modules required by this configuration
 terraform apply \
   -var='environment=emea' \
   -var='profile=backend-test' \
-  -var='region=eu-central-1' \
-  -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
+  -var='region=eu-central-1'
 ```
 
 8. Check if S3 bucket has been createt in AWS
@@ -135,8 +134,7 @@ terraform apply \
 terraform destroy \
   -var='environment=emea' \
   -var='profile=backend-test' \
-  -var='region=eu-central-1' \
-  -var='shared_credentials_file=C:\\Users\\<<USERNAME>>\\.aws\\credentials'
+  -var='region=eu-central-1'
 ```
 
 # 02 Create remote state and lock
