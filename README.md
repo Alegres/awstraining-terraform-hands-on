@@ -168,7 +168,8 @@ cd aws-infrastructure/terraform​
 
 # 03 Create environments
 **Attention!**
-Before switching to the next branches, make sure that you keep your wrapper.properties file with your unique bucket string.
+Make sure that you keep your wrapper.properties file with your unique bucket string.
+You must also make sure that ```<<Set your account ID>>``` placeholder in **outputs.tf** is adjusted and set to your account id.
 
 1. Checkout to branch
 
@@ -209,6 +210,10 @@ Please first adjust ```<<Set your account ID>>``` placeholder in **outputs.tf** 
 8. Check if above Security Groups has been created in AWS.
 
 # 04 Create ECS (whole infrastructure)
+**Attention!**
+Make sure that you keep your wrapper.properties file with your unique bucket string.
+You must also make sure that ```<<Set your account ID>>``` placeholder in **outputs.tf** is adjusted and set to your account id.
+
 1. Checkout to branch
 
 ```
