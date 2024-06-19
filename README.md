@@ -183,6 +183,8 @@ cd aws-infrastructure/terraform
 ```
 
 3. Start w2.sh script to create environmental variables
+**Attention!**
+Please first adjust ```<<Set your account ID>>``` placeholder in **outputs.tf** and set it to your account id.
 
 ```
 ./w2.sh backend-test eu-central-1 environments/backend-test/emea/eu-central-1/globals apply
