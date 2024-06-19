@@ -325,6 +325,8 @@ curl -vk http://myapp-lb-564621670.eu-central-1.elb.amazonaws.com/device/v1/test
 ```
 
 ## Deploy application with GitHub
+You can also fork **awstraining-terraform** base repository to your account.
+
 Then, please set **BACKEND_EMEA_TEST_SMOKETEST_BACKEND_PASSWORD** repository secret to "welt", as this is the password for the above test user, that will be used for smoke tests.
 
 Make sure that you have also:
