@@ -224,7 +224,7 @@ cd aws-infrastructure/terraform​
 3. Start the setup_new_region.sh script​
 
 ```
-./setup_new_region.sh w2.sh backend-test eu-central-1 apply​
+./setup_new_region.sh w2.sh backend-test eu-central-1 apply​ -auto-approve
 ```
 
 Analyze carefully the output.​
@@ -232,7 +232,7 @@ Apply only changes that you understand, one-by-one!​
 
 4. After all is done – check your AWS account and make sure that the ECS Fargate cluster was created
 
-# Application deployment
+# Application deployment (Optional)
 ## Set basic auth credentials in Secrets Manager
 First, please set secrets (credentials) in AWS Secrets Manager:
 ```json
@@ -344,3 +344,10 @@ Go to Settings -> Secrets and variables and setup AWS credentials:
 * **BACKEND_EMEA_TEST_AWS_SECRET**
 
 Finally, please run **Multibranch pipeline** to deploy application to previously created infrastructure.
+
+# Destroying infrastructure
+1. Start the setup_new_region.sh script​ with destroy command
+
+```
+./setup_new_region.sh w2.sh backend-test eu-central-1 destroy​ -auto-approve
+```
