@@ -167,6 +167,9 @@ cd aws-infrastructure/terraform​
 6. Check if above table has been created in AWS
 
 # 03 Create environments
+**Attention!**
+Before switching to the next branches, make sure that you keep your wrapper.properties file with your unique bucket string.
+
 1. Checkout to branch
 
 ```
