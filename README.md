@@ -166,6 +166,10 @@ cd aws-infrastructure/terraform​
 
 6. Check if above table has been created in AWS
 
+7. Go to S3 and open your custom TFSTATE bucket.
+
+8. Open .tfstate file for your DynamoDB table that was created and analyze its content.
+
 # 03 Create environments
 **Attention!**
 Make sure that you keep your wrapper.properties file with your unique bucket string.
@@ -183,9 +187,9 @@ git checkout 03-create-environments
 cd aws-infrastructure/terraform
 ```
 
-3. Start w2.sh script to create environmental variables
 **Attention!**
 Please first adjust ```<<Set your account ID>>``` placeholder in **outputs.tf** and set it to your account id.
+3. Start w2.sh script to create environmental variables
 
 ```
 ./w2.sh backend-test eu-central-1 environments/backend-test/emea/eu-central-1/globals apply
@@ -207,7 +211,7 @@ Please first adjust ```<<Set your account ID>>``` placeholder in **outputs.tf** 
 ./w2.sh backend-test eu-central-1 common/networking/securitygroups apply
 ```
 
-8. Check if above Security Groups has been created in AWS.
+8. Check if above Security Groups have been created in AWS.
 
 # 04 Create ECS (whole infrastructure)
 **Attention!**
