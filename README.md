@@ -138,6 +138,8 @@ terraform destroy \
 ```
 
 # 02 Create remote state and lock
+**Attention!** Make sure that you set your unique bucket string in wrapper.properties file.
+
 1. Checkout to branch
 
 ```
