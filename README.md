@@ -265,9 +265,15 @@ First, please set secrets (credentials) in AWS Secrets Manager:
 You also need to update **task.json** and replace **<<TODO: set ARN of secrets manager>>** with ARN of your Secrets Manager. Push your changes.
 
 ## Deploy application with manual commands
-If you do not have Docker, Maven and JAVA installed locally, then please setup Cloud9 environment in AWS, following instructions from:
+If you do not have Docker, Maven and JAVA installed locally, then please setup EC2 environment in AWS.
+
+How to create EC2 instance which will allow us to deploy image? (skip SNS permissions):
+* https://github.com/Alegres/awstraining-basics-hands-on?tab=readme-ov-file#create-ec2-sns-topic-and-run-notification-script
+
+and then follow the instructions on how to build & deploy app using this instance:
 * https://github.com/Alegres/awstraining-basics-hands-on?tab=readme-ov-file#deploy-our-application
 
+Otherwise, when deploying from your local machine:
 1. Go to main directory of your forked repository and build application using Maven
 
 ```bash
