@@ -36,8 +36,21 @@ aws_access_key_id = YOUR_ACCESS_KEY_ID​
 aws_secret_access_key = YOU_SECRET_ACCESS_KEY​
 ```
 
+**ATTENTION!**
+If you cannot find the ```.aws\credentials```, then please create it and make sure to set default & backend-test profiles.
+Default profile should contain some dummy access and secret keys to avoid accident changes in the real environment (default) if no profile is provided.
+
 **DO NOT USE ROOT USER CREDENTIALS! ​**
 Instead, create admin user in IAM, assign him AdministratorAccess policy and generate credentials for this non-root user.​
+
+**Attention!**
+If you do not have **choco**, please run PowerShell as an admin and request for the permission to run it as admin (send request to IT).
+Then, use the following command to install **choco**:
+
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('
+https://community.chocolatey.org/install.ps1'))
+```
 
 # 01 Create S3 bucket
 Documentation:
