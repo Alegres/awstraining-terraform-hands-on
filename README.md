@@ -42,6 +42,7 @@ Default profile should contain some dummy access and secret keys to avoid accide
 
 **DO NOT USE ROOT USER CREDENTIALS! ​**
 Instead, create admin user in IAM, assign him AdministratorAccess policy and generate credentials for this non-root user.​
+**Tutorial:** https://capgemini-my.sharepoint.com/personal/maciej_bus_capgemini_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmaciej%5Fbus%5Fcapgemini%5Fcom%2FDocuments%2FRecordings%2FTworzenie%20u%C5%BCytkownika%20technicznego%20AWS%20IAM%2Emkv&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ct=1730129634719&or=OWA%2DNT%2DMail&cid=604c6fac%2Dedd5%2D2310%2D5d8d%2D9e2e78a6a600&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E0ff5e82d%2D7349%2D4572%2Da9cb%2Dfe31d3606a27
 
 **Attention!**
 If you do not have **choco**, please run PowerShell as an admin and request for the permission to run it as admin (send request to IT).
