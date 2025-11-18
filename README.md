@@ -59,6 +59,23 @@ aws_secret_access_key = YOU_SECRET_ACCESS_KEY​
 ```
 
 **ATTENTION!**
+It is very important to set **backend-test** as profile!
+
+
+5. Test this command
+```bash
+aws iam list-users --profile backend-test
+```
+
+**ATTENTION!**
+Make sure to be outside of the VPN in case you are facing some SSL certificates issues!
+If AWS CLI says the profile is wrong, please enter:
+```bash
+aws configure --profile backend-test
+```
+and provide all the data (access key, secret, region eu-central-1, and output set to **json**).
+
+**ATTENTION!**
 If you cannot find the ```.aws\credentials```, then please create it and make sure to set default & backend-test profiles.
 Default profile should contain some dummy access and secret keys to avoid accident changes in the real environment (default) if no profile is provided.
 
