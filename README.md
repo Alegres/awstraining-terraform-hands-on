@@ -423,3 +423,16 @@ Finally, please run **Multibranch pipeline** to deploy application to previously
 ```
 ./setup_new_region.sh w2.sh backend-test eu-central-1 destroy​ -auto-approve
 ```
+
+# Common Issues
+* If AWS CLI is not set in PATH, our custom scripts i.e. setup_new_region.sh will not work
+* Terraform must be installed and added to the PATH as well
+  * Min. Version is 1.7.0
+* If you have very specific AWS CLI config and credentials settings (relevant for your project), it can cause some conflicts later when using Terraform's credentials provider
+* Make sure that you are not accessing any SSO in your AWS CLI config
+  * If so, please comment out relevant lines during the training
+* When facing „Failed to get shared config profile, backend-test” error, make sure that you run aws configure –-profile backend-test from the console and setup access key and secret.
+  * Then, if you are still facing an issue with STS, make sure that your AWS credentials file does not contain any weird characters / end lines.
+* When running Terraform, if some resources already exist in AWS (for example a resource with the same name was not removed after previous training modules), Terraform will return exception
+  * In that case you should first manually remove the resource in AWS and then run Terraform one more time
+
