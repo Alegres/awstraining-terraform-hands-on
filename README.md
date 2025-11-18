@@ -33,11 +33,20 @@ C:\terraform
 
 and save.
 
+If you have issues with corporate policies and cannot request for the access, then you can simply run Git Bash and set PATH for your sessions:
+```bash
+setx PATH "$PATH;C:\terraform"
+```
+
 3. Install AWS CLI from PowerShell ​
 
 ```
 choco install awscli​
 ```
+
+**ATTENTION!**
+If you do not have **choco**, you can also install AWS CLI according to this instruction:
+* https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions
 
 4. Create profile in AWS credentials
 
