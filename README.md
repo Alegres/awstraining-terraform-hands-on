@@ -26,12 +26,13 @@ If you do not have **choco**, you can download binaries from:
 * https://releases.hashicorp.com/terraform/1.7.0/
 
 Please extract them to your C drive and add the following entry to your system PATH:
-Search in Windows for Environment Variables. Under System variables select Path -> Edit. Click New and add link to your Terraform directory, eg.:
+Search in Windows for **Environment Variables for your account.** Under System variables select Path -> Edit. Click New and add link to your Terraform directory, eg.:
 ```bash
 C:\terraform
 ```
 
 and save.
+Remember to restart your Git Bash!
 
 If you have issues with corporate policies and cannot request for the access, then you can simply run Git Bash and set PATH for your sessions:
 ```bash
