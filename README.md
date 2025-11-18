@@ -14,6 +14,8 @@
 # Preparation
 1. Fork training repository to your account
     * https://github.com/Alegres/awstraining-terraform
+  
+**ATTENTION!** Make sure to **uncheck** the "copy main branch only" box, and actually fork **all branches**.
 
 2. Install Terraform from PowerShell ​
 
