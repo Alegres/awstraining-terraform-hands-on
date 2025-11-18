@@ -9,6 +9,7 @@
   - [Set basic auth credentials in Secrets Manager](#set-basic-auth-credentials-in-secrets-manager)
   - [Deploy application with manual commands](#deploy-application-with-manual-commands)
   - [Deploy application with GitHub](#deploy-application-with-github)
+- [Common Issues](#common-issues)
 
 
 # Preparation
