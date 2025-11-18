@@ -21,6 +21,18 @@
 choco install terraform --version=1.7.0 –force​
 ```
 
+**Attention!**
+If you do not have **choco**, you can download binaries from:
+* https://releases.hashicorp.com/terraform/1.7.0/
+
+Please extract them to your C drive and add the following entry to your system PATH:
+Search in Windows for Environment Variables. Under System variables select Path -> Edit. Click New and add link to your Terraform directory, eg.:
+```bash
+C:\terraform
+```
+
+and save.
+
 3. Install AWS CLI from PowerShell ​
 
 ```
